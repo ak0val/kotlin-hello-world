@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Hello World</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hello-container {
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        .hello-text {
+            font-size: 4rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin: 0;
+            transform-style: preserve-3d;
+        }
+
+        .letter {
+            display: inline-block;
+            animation: bounce 2s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .letter:hover {
+            transform: scale(1.3) rotateY(360deg);
+            cursor: pointer;
+        }
+
+        .letter:nth-child(1) { color: #ff6b6b; animation-delay: 0s; }
+        .letter:nth-child(2) { color: #4ecdc4; animation-delay: 0.1s; }
+        .letter:nth-child(3) { color: #45b7d1; animation-delay: 0.2s; }
+        .letter:nth-child(4) { color: #f9ca24; animation-delay: 0.3s; }
+        .letter:nth-child(5) { color: #f0932b; animation-delay: 0.4s; }
+        .letter:nth-child(6) { color: #eb4d4b; animation-delay: 0.5s; }
+        .letter:nth-child(7) { color: #6c5ce7; animation-delay: 0.6s; }
+        .letter:nth-child(8) { color: #00d2d3; animation-delay: 0.7s; }
+        .letter:nth-child(9) { color: #ff9ff3; animation-delay: 0.8s; }
+        .letter:nth-child(10) { color: #54a0ff; animation-delay: 0.9s; }
+        .letter:nth-child(11) { color: #5f27cd; animation-delay: 1s; }
+        .letter:nth-child(12) { color: #00d2d3; animation-delay: 1.1s; }
+        .letter:nth-child(13) { color: #ff6348; animation-delay: 1.2s; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) rotateX(0);
+            }
+            40% {
+                transform: translateY(-30px) rotateX(10deg);
+            }
+            60% {
+                transform: translateY(-15px) rotateX(-5deg);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 3s ease 2s forwards;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            left: 80%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hello-text {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="hello-container">
+        <h1 class="hello-text">
+            <span class="letter">H</span>
+            <span class="letter">e</span>
+            <span class="letter">l</span>
+            <span class="letter">l</span>
+            <span class="letter">o</span>
+            <span class="letter">,</span>
+            <span class="letter"> </span>
+            <span class="letter">W</span>
+            <span class="letter">o</span>
+            <span class="letter">r</span>
+            <span class="letter">l</span>
+            <span class="letter">d</span>
+            <span class="letter">!</span>
+        </h1>
+        <p class="subtitle">Welcome to the colorful world of web development! 🌈</p>
+    </div>
+
+    <script>
+        // Add some interactive sparkle effects
+        document.addEventListener('click', function(e) {
+            createSparkle(e.clientX, e.clientY);
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = '10px';
+            sparkle.style.height = '10px';
+            sparkle.style.background = getRandomColor();
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '1000';
+            sparkle.style.animation = 'sparkleEffect 1s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6c5ce7'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Add sparkle animation to CSS dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleEffect {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(3) rotate(180deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
